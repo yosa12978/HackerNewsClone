@@ -9,7 +9,6 @@ namespace HackerNewsClone.Domain.Entities
 {
     public class TextPost : Post
     {
-        [Required]
         public string Text { get; set; } = default!;
     }
 }

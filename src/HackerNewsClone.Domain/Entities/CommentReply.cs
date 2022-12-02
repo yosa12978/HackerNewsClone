@@ -9,7 +9,6 @@ namespace HackerNewsClone.Domain.Entities
 {
     public class CommentReply : Comment
     {
-        [Required]
         public Comment Parent = default!;
     }
 }

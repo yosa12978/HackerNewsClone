@@ -9,7 +9,6 @@ namespace HackerNewsClone.Domain.Entities
 {
     public class LinkPost : Post
     {
-        [Required, Url]
         public string URL { get; set; } = default!;
     }
 }

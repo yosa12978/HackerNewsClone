@@ -9,9 +9,7 @@ namespace HackerNewsClone.Domain.Entities
 {
     public class Upvote
     {
-        [Required, Key]
         public long UserId { get; set; }
-        [Required, Key]
         public long PostId { get; set; }
     }
 }

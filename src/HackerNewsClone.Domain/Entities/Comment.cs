@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace HackerNewsClone.Domain.Entities
 {
-    public class Comment : BaseEntity
+    public class Comment : Publication
     {
-        [Required]
         public long PostId { get; set; }
-        [Required]
         public string Text { get; set; } = default!;
     }
 }

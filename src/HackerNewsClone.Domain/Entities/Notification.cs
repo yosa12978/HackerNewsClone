@@ -10,5 +10,6 @@ namespace HackerNewsClone.Domain.Entities
     {
         public long Id { get; set; }
         public string UserID { get; set; } = default!;
+        public string Message { get; set; } = default!;
     }
 }
