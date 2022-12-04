@@ -4,7 +4,7 @@ using HackerNewsClone.EFCore.Data;
 
 namespace HackerNewsClone.EFCore.Repositories
 {
-    public abstract class BaseRepository<T> : IBaseRepository<T> where T : class
+    public abstract class BaseRepository<T> : IBaseRepository<T> where T : BaseEntity
     {
         protected BaseContext context;
         public BaseRepository(BaseContext context) 
@@ -24,12 +24,12 @@ namespace HackerNewsClone.EFCore.Repositories
 
         public List<T> GetAll()
         {
-            throw new NotImplementedException();
+            return context.Set<T>().ToList();
         }
 
         public T GetByID(long ID)
         {
-            throw new NotImplementedException();
+            return context.Set<T>().FirstOrDefault(x => x.Id == ID);
         }
 
         public T Update(T entity)
