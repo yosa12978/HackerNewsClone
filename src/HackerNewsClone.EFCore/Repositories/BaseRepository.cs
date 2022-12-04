@@ -1,6 +1,8 @@
+using System.Net.Mime;
 using System.ComponentModel;
 using HackerNewsClone.Domain.Repositories;
 using HackerNewsClone.EFCore.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace HackerNewsClone.EFCore.Repositories
 {
@@ -12,29 +14,35 @@ namespace HackerNewsClone.EFCore.Repositories
             this.context = context;
         }
 
-        public T Create(T entity)
+        public async Task<T> Create(T entity)
         {
-            throw new NotImplementedException();
+            context.Set<T>().Add(entity);
+            await context.SaveChangesAsync();
+            return entity;
         }
 
-        public void Delete(long ID)
+        public async Task Delete(long ID)
         {
-            throw new NotImplementedException();
+            T? ent = await context.Set<T>().FindAsync(ID);
+            context.Set<T>().Remove(ent);
+            await context.SaveChangesAsync();
         }
 
-        public List<T> GetAll()
+        public async Task<List<T>> GetAll()
         {
-            return context.Set<T>().ToList();
+            return await context.Set<T>().ToListAsync();
         }
 
-        public T GetByID(long ID)
+        public async Task<T?> GetByID(long ID)
         {
-            return context.Set<T>().FirstOrDefault(x => x.Id == ID);
+            return await context.Set<T>().FindAsync(ID);
         }
 
-        public T Update(T entity)
+        public async Task<T> Update(T entity)
         {
-            throw new NotImplementedException();
+            var res =  context.Set<T>().Update(entity);
+            await context.SaveChangesAsync();
+            return res.Entity;
         }
     }
 

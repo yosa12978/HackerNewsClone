@@ -2,10 +2,10 @@ namespace HackerNewsClone.Domain.Repositories
 {
     public interface IBaseRepository<T>
     {
-        List<T> GetAll();
-        T GetByID(long ID);
-        T Create(T entity);
-        T Update(T entity);
-        void Delete(long ID);
+        Task<List<T>> GetAll();
+        Task<T?> GetByID(long ID);
+        Task<T> Create(T entity);
+        Task<T> Update(T entity);
+        Task Delete(long ID);
     }
 }
